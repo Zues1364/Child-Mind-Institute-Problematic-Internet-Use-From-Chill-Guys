@@ -96,10 +96,121 @@ This notebook refines the baseline solution by incorporating advanced modeling t
 
 ---
 
-## Usage
-1. Ensure you have the required Python libraries installed, including `numpy`, `pandas`, `torch`, `scikit-learn`, `optuna`, and `lightgbm`.
-2. Download the dataset from the Kaggle competition page and place it in the appropriate input directory.
-3. Run the notebooks sequentially to replicate the solutions and generate predictions.
+### How to run
+
+### Step-by-Step Instructions to Run the Code
+
+#### Prerequisites
+
+* **Software:**
+  * Python 3.x
+  * Jupyter Notebook or Jupyter Lab
+  * Kaggle API (if you want to download the data directly from Kaggle)
+* **Hardware (Recommended for "Optimized Solution.ipynb"):**
+  * A system with a GPU is highly recommended due to the use of GPU-accelerated libraries (PyTorch, XGBoost with `gpu_hist`, CatBoost with `task_type: 'GPU'`).
+
+#### **Step 1: Set Up Kaggle API**
+
+1. **Create a Kaggle Account:** If you don't have one, sign up at [https://www.kaggle.com/](https://www.kaggle.com/).
+2. **Generate API Token:**
+  * Go to your Kaggle account page.
+  * Click on "Create New API Token".
+  * This will download a file named `kaggle.json`.
+3. **Place `kaggle.json`:**
+  * Move this file to the directory `~/.kaggle/` on Linux/macOS or `C:\\Users\\<username>\\.kaggle\\` on Windows.
+  * If the `.kaggle` directory doesn't exist, create it.
+
+#### **Step 2: Clone the Repository**
+
+1. Open your terminal or command prompt.
+  
+2. Clone this repository to your local machine using Git:
+  
+      git clone https://github.com/Zues1364/Child-Mind-Institute-Problematic-Internet-Use-From-Chill-Guys.git
+   
+      cd Child-Mind-Institute-Problematic-Internet-Use-From-Chill-Guys
+  
+
+#### **Step 3: Install Required Libraries**
+
+1. Navigate to the cloned repository directory:
+  
+2. It's recommended to create a virtual environment to avoid conflicts with other Python projects:
+  
+  * **Using `venv` (Recommended):**
+    
+        python3 -m venv .venv
+        source .venv/bin/activate  # On Linux/macOS
+        .venv\\Scripts\\activate  # On Windows
+    
+3. Install the required libraries using `pip`:
+  
+      pip install -r requirements.txt
+   
+  
+  #### **Step 4: Download the Dataset**
+  
+4. **Using Kaggle API:**
+  
+  * Ensure you have joined the "Child Mind Institute - Problematic Internet Use" competition on Kaggle.
+    
+  * If your **notebook** is configured to run on a Kaggle environment:
+    
+    * The dataset is likely already available in the `/kaggle/input/` directory.
+  * If you are running **locally**:
+    
+    * Use the Kaggle API to download the dataset:
+      
+          kaggle competitions download -c child-mind-institute-problematic-internet-use
+      
+    * Unzip the downloaded data:
+      
+          unzip child-mind-institute-problematic-internet-use.zip -d input
+      
+    * **Or** you can manually download and unzip into the `input` folder.
+      
+
+#### **Step 5: Run the Jupyter Notebooks**
+
+1. **Start Jupyter Notebook or Jupyter Lab:**
+  
+      jupyter notebook
+  
+  or
+  
+      jupyter lab
+  
+2. **Open the Notebooks:**
+  
+  * Navigate to the directory where you cloned the repository.
+  * Open either **First Solution to CMI.ipynb** or **Optimized Solution.ipynb**.
+3. **Run the Cells:**
+  
+  * Execute each cell in the notebook sequentially by pressing `Shift + Enter`.
+  * Make sure to read the comments and understand what each cell does.
+
+**Specific Considerations for Each Notebook:**
+
+* **First Solution to CMI.ipynb:**
+  
+  * This notebook can be run on a CPU, although a GPU will speed up the LightGBM training.
+  * Ensure that the paths to the data files are correct.
+  * After running the notebook, the submission file will be generated as `submission.csv`.
+* **Optimized Solution.ipynb:**
+  
+  * **GPU Usage:** This notebook is designed to utilize a GPU. If you don't have a GPU, you will need to modify the following:
+    * Change `device: 'cpu'` in `Params` for LightGBM.
+    * Change `tree_method: 'hist'` (or remove the line) in `XGB_Params` for XGBoost.
+    * Change `task_type: 'CPU'` in `CatBoost_Params` for CatBoost.
+  * **Autoencoder:** Pay close attention to the AutoEncoder section. The number of epochs and batch size might need adjustment based on your hardware.
+  * **KNNImputer:** This step can be computationally intensive. If you have limited RAM, you might need to reduce the dataset size or use a more memory-efficient imputation method.
+
+#### **Step 6: Submit Predictions (Optional)**
+
+1. **Upload to Kaggle:**
+  * Go to the "Child Mind Institute - Problematic Internet Use" competition page on Kaggle.
+  * Click on "Submit Predictions".
+  * Upload the generated `submission.csv` file.
 
 ---
 
