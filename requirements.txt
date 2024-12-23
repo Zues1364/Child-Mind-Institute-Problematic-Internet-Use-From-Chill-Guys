@@ -1,0 +1,16 @@
+numpy
+pandas
+polars
+scikit-learn
+optuna
+scipy
+matplotlib
+seaborn
+torch
+lightgbm
+catboost
+xgboost
+colorama
+tqdm
+ipython
+kaggle
