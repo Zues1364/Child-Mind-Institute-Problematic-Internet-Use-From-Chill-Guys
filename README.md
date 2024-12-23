@@ -1,4 +1,6 @@
-# Child-Mind-Institute-Problematic-Internet-Use-From-Chill-Guys
+![Banner](https://i.imgur.com/39VFeOp.png)
+
+# Child Mind Institute - Problematic Internet Use - Chill Guys Team
 
 ## Overview
 This repository contains two Jupyter notebooks that provide solutions for the "Child Mind Institute - Problematic Internet Use" competition hosted on Kaggle. The objective of the competition is to predict problematic internet usage levels using physical activity and other associated features.
